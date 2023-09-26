@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import '../../Feature/Pokemon_List/Screens/pokemon_list_screen.dart';
-import '../../Feature/Screens/favorites_list_screen.dart';
-import '../../Feature/Screens/main_screen.dart';
+import '../../Feature/Favorites_List/favorites_list_screen.dart';
+import '../../Feature/Main/main_screen.dart';
 
 part 'app_routes.gr.dart';
 

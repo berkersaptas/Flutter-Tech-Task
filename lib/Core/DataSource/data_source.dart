@@ -10,16 +10,4 @@ class DataSource {
     final data = res.data;
     return PokemonListModel.fromJson(data);
   }
-
-  Future<PokemonListModel> getInitPokemonList() async {
-    final res = await client.get("pokemon");
-    final data = res.data;
-    return PokemonListModel.fromJson(data);
-  }
-
-  Future<PokemonListModel> getNextPokemonList(String url) async {
-    final res = await Dio().get(url);
-    final data = res.data;
-    return PokemonListModel.fromJson(data);
-  }
 }

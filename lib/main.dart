@@ -1,26 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokemonapp/Core/Helpers/static_constants.dart';
+import 'package:pokemonapp/Core/Hive/favorite_object.dart';
+import 'package:pokemonapp/Core/Provider/favorite_manager.dart';
+import 'package:provider/provider.dart';
 import 'Core/Routes/app_routes.dart';
 
 Future<void> main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter("pokemonapp");
+  Hive.registerAdapter<FavoriteObject>(FavoriteObjectAdapter());
+  await Hive.openBox<FavoriteObject>("favorites");
+  //Set Portrait Up and PortraitDown
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _appRouter = AppRouter();
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: AppConstants.strAppName,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
-      ),
-      routerConfig: _appRouter.config(),
-    );
+    final Box<FavoriteObject> favorites = Hive.box<FavoriteObject>("favorites");
+    return ChangeNotifierProvider<FavoriteManager>(
+        //Checking that the favorite list is empty on the first load and when exiting without adding it to the favorites, and checking that the list is fetched from local storage if it is full.
+        create: (context) => favorites.isEmpty ? FavoriteManager([]) : FavoriteManager(favorites.values.toList()),
+        child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: AppConstants.strAppName,
+          theme: ThemeData(
+            //Set light Theme
+            brightness: Brightness.light,
+            colorScheme: ColorScheme.fromSeed(seedColor: AppConstants.clrRedMain),
+            useMaterial3: true,
+          ),
+          routerConfig: _appRouter.config(),
+        ));
   }
 }
