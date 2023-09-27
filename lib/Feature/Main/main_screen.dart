@@ -15,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [PokemonListRoute(), FavoritesListRoute()],
+      routes: const [PokemonListRoute(), FavoriteListRoute()],
       bottomNavigationBuilder: (_, tabsRouter) => BottomNavigationBar(
         currentIndex: tabsRouter.activeIndex,
         onTap: (value) => tabsRouter.setActiveIndex(value),

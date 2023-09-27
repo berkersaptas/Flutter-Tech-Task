@@ -26,7 +26,8 @@ class FavoriteManager extends ChangeNotifier {
     });
     await favoritesHive.delete(desiredKey);
     //check list item and remove
-    _favorites.removeWhere((value) => value.name == item.name && value.url == item.url);
+    _favorites.removeWhere(
+        (value) => value.name == item.name && value.url == item.url);
     notifyListeners();
   }
 
@@ -42,4 +43,25 @@ class FavoriteManager extends ChangeNotifier {
     Box<FavoriteObject> box = Hive.box<FavoriteObject>('favorites');
     return box;
   }
+
+  // searchFavoritesItem(String searchValue) {
+  //   var searchArray = searchValue.split(" ");
+  //   _favoritesTemp.clear();
+  //   _favoritesTemp = List.of(_favorites);
+  //   String text = "";
+  //   for (var i = 0; i < _favorites.length; i++) {
+  //     text = _favorites[i].name.toString();
+  //     var ok = true;
+  //     for (int i2 = 0; i2 < searchArray.length; i2++) {
+  //       if (searchArray[i2] != "" && !text.contains(searchArray[i2])) {
+  //         ok = false;
+  //         break;
+  //       }
+  //     }
+  //     if (ok) {
+  //       _favoritesTemp.add(_favorites[i]);
+  //     }
+  //   }
+  //   notifyListeners();
+  // }
 }
