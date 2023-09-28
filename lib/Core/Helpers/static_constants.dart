@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   //strings
-  static const String strAppName = "Pokemon App";
+  static const String strAppName = "Pokemon";
 
   //URLS
   static const String base_url = "https://pokeapi.co/api/v2/";

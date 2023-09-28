@@ -1,16 +1,40 @@
-# pokemonapp
+# Pokemon App
 
-A new Flutter project.
+Flutter project
 
-## Getting Started
+# Features
 
-This project is a starting point for a Flutter application.
+ - Pokemons List
+ - Pokemon Detail
+ - Favorite List
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Dependencies 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<ul>
+  <li> <a href="https://pub.dev/packages/auto_route" title="Navigation">Auto Route</a>
+  <li> <a href="https://pub.dev/packages/provider" title="State Management">Provider</a>
+  <li> <a href="https://pub.dev/packages/hive" title="Local Storage">Hive</a>  
+  <li> <a href="https://pub.dev/packages/infinite_scroll_pagination" title="Pagination">Infinity Scroll Pagination</a> 
+  <li> <a href="https://pub.dev/packages/dio" title="Http Client">Dio</a>  
+</ul>
+
+# Versions
+
+- Flutter verson : 3.13.6
+- Dart SDK version: 3.1.3
+
+# Images
+
+- Light
+
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/pokemons-light.png?raw=true)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/favorites-light.png?raw=true)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/detail-light.png?raw=true)
+
+- Dark
+
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/pokemons-dark.png?raw=true)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/favorites-dark.png?raw=true)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/detail-dark.png?raw=true)
+

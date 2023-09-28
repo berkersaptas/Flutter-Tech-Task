@@ -31,99 +31,115 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
           future: _pokemonDetailApi,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // print(
-              //     snapshot.data?.sprites?.other?.officialArtwork?.frontDefault);
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Image.network(
-                    //   snapshot
-                    //       .data!.sprites!.other!.officialArtwork!.frontDefault!,
-                    //   height: MediaQuery.of(context).size.height / 3,
-                    //   width: MediaQuery.of(context).size.width,
-                    // ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      snapshot.data!.name!,
-                      style: _titleTextStyle(),
-                    ),
-                    Text(
-                        "#${snapshot.data!.id!.addLeadingZeros(4).toString()}"),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Type",
-                      style: _titleTextStyle(),
-                    ),
-                    Row(
-                        children: List.generate(
-                            snapshot.data!.types!.length,
-                            (index) => IntrinsicHeight(
-                                    child: Row(children: [
-                                  Text(
-                                      snapshot.data!.types![index].type!.name!),
-                                  //Last item after not seen divider
-                                  index + 1 < snapshot.data!.types!.length
-                                      ? const VerticalDivider(
-                                          color: Colors.black,
-                                          thickness: 1,
-                                          width: 20,
-                                        )
-                                      : const SizedBox.shrink(),
-                                ])))),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Ability",
-                      style: _titleTextStyle(),
-                    ),
-                    Row(
-                        children: List.generate(
-                            snapshot.data!.abilities!.length,
-                            (index) => IntrinsicHeight(
-                                    child: Row(children: [
-                                  Text(snapshot
-                                      .data!.abilities![index].ability!.name!),
-                                  //Last item after not seen divider
-                                  index + 1 < snapshot.data!.abilities!.length
-                                      ? const VerticalDivider(
-                                          color: Colors.black,
-                                          thickness: 1,
-                                          width: 20,
-                                        )
-                                      : const SizedBox.shrink(),
-                                ])))),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Height",
-                      style: _titleTextStyle(),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Height",
-                      style: _titleTextStyle(),
-                    ),
-                    Text(snapshot.data!.height!.toString()),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Weight",
-                      style: _titleTextStyle(),
-                    ),
-                    Text(snapshot.data!.weight!.toString()),
-                  ],
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Card(
+                        elevation: 5,
+                        child: Image.network(
+                          snapshot.data!.sprites!.other!.officialArtwork!.frontDefault ?? "",
+                          fit: BoxFit.fill,
+                          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return SizedBox(
+                              height: MediaQuery.of(context).size.height / 3,
+                              width: MediaQuery.of(context).size.width,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              ),
+                            );
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Column(
+                              children: [
+                                Center(
+                                  child: Icon(Icons.error),
+                                ),
+                                Text("Image load fail")
+                              ],
+                            );
+                          },
+                          height: MediaQuery.of(context).size.height / 3,
+                          width: MediaQuery.of(context).size.width,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "#${snapshot.data!.id!.addLeadingZeros(4).toString()} ${snapshot.data!.name!}",
+                        style: _titleTextStyle(),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Type",
+                        style: _titleTextStyle(),
+                      ),
+                      Row(
+                          children: List.generate(
+                              snapshot.data!.types!.length,
+                              (index) => IntrinsicHeight(
+                                      child: Row(children: [
+                                    Text(snapshot.data!.types![index].type!.name!),
+                                    //Last item after not seen divider
+                                    index + 1 < snapshot.data!.types!.length
+                                        ? const VerticalDivider(
+                                            color: Colors.black,
+                                            thickness: 1,
+                                            width: 20,
+                                          )
+                                        : const SizedBox.shrink(),
+                                  ])))),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Ability",
+                        style: _titleTextStyle(),
+                      ),
+                      Row(
+                          children: List.generate(
+                              snapshot.data!.abilities!.length,
+                              (index) => IntrinsicHeight(
+                                      child: Row(children: [
+                                    Text(snapshot.data!.abilities![index].ability!.name!),
+                                    //Last item after not seen divider
+                                    index + 1 < snapshot.data!.abilities!.length
+                                        ? const VerticalDivider(
+                                            color: Colors.black,
+                                            thickness: 1,
+                                            width: 20,
+                                          )
+                                        : const SizedBox.shrink(),
+                                  ])))),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Weight",
+                        style: _titleTextStyle(),
+                      ),
+                      Text(_weightCalculator(snapshot.data!.weight!)),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Height",
+                        style: _titleTextStyle(),
+                      ),
+                      Text(_heightCalculator(snapshot.data!.height!)),
+                    ],
+                  ),
                 ),
               );
             } else if (snapshot.hasError) {
@@ -139,16 +155,20 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
     );
   }
 
-  String _heightCalculator() {
-    return "";
+  String _weightCalculator(int value) {
+    //convert kg
+    double kg = value / 10.0;
+    //convert lbs
+    double lbs = kg * 2.20462;
+    return '${kg.toStringAsFixed(1)} kg  |  ${lbs.toStringAsFixed(1)} lbs';
   }
 
-  String _weightCalculator() {
-    return "";
+  String _heightCalculator(int value) {
+    //convert m
+    return "${value / 10.0} m ";
   }
 
   TextStyle _titleTextStyle() {
-    return const TextStyle(
-        fontWeight: FontWeight.bold, fontSize: AppConstants.large_font);
+    return const TextStyle(fontWeight: FontWeight.bold, fontSize: AppConstants.large_font);
   }
 }
