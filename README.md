@@ -28,13 +28,15 @@ Flutter project
 
 - Light
 
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/pokemons-light.png?raw=true)
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/favorites-light.png?raw=true)
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/detail-light.png?raw=true)
+<img src="https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/3016c250-8b8b-48e9-9a80-2c60a1c41eef" width="200" />
+
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/3016c250-8b8b-48e9-9a80-2c60a1c41eef)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/166c00fc-0a1e-4f84-b242-52f7c9985984)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/65656e73-d72a-4777-9cd4-ee9df62724c1)
 
 - Dark
 
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/pokemons-dark.png?raw=true)
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/favorites-dark.png?raw=true)
-![alt](https://github.com/berkersaptas/Flutter-Tech-Task/blob/master/github/detail-dark.png?raw=true)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/a066a40a-e70f-4cc8-af88-87d5b62e8125)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/57ec06fa-2344-4284-b8e8-cdf5403d60d7)
+![alt](https://github.com/berkersaptas/Flutter-Tech-Task/assets/28731627/d30660b1-46a9-47d1-93b5-6d3853abce1a)
 
